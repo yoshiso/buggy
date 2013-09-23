@@ -27,6 +27,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.14)
+    bootstrap-sass (2.3.2.2)
+      sass (~> 3.2)
     builder (3.1.4)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -37,6 +39,10 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.1)
+    handlebars_assets (0.14.1)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.1)
@@ -108,7 +114,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   coffee-rails (~> 4.0.0)
+  handlebars_assets
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.0)
