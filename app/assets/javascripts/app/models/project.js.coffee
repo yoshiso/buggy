@@ -1,5 +1,5 @@
 class App.Models.Project extends Backbone.Model
-
+    url:"/projects"
 
 
 class App.Collections.Projects extends Backbone.Collection
