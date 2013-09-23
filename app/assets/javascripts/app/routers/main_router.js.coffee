@@ -11,10 +11,14 @@ class App.Routers.MainRouter extends Backbone.Router
 
     index: ->
         @layoutViews()
+        @contentView.swapMain(new App.Views.Ads())
+        @contentView.swapSide(new App.Views.News())
 
 
     project: ->
         @layoutViews()
+        @contentView.swapMain(new App.Views.Empty())
+        @contentView.swapSide(new App.Views.Projects({collection: new App.Collections.Projects}))
 
 
     layoutViews: ->
