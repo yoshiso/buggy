@@ -7,7 +7,7 @@ class App.Views.NewProject extends Backbone.View
 
 
     render: ->
-        @$el.html(@template())
+        @$el.html(@template(@model.toJSON()))
         @
 
 
