@@ -10,6 +10,7 @@ class App.Views.Projects extends Backbone.View
         App.Vent.trigger "project:new"
 
     initialize: ->
+        @childViews = []
         #renderされる度resetを起動する
         @listenTo @collection, "reset", @render
         #プロジェクトが新しく生成された時イベントを受け取ってコレクションに追加
@@ -18,6 +19,8 @@ class App.Views.Projects extends Backbone.View
         @listenTo @collection, "add", @renderProject
         #collectionをサーバーから取得する
         @collection.fetch({reset:true})
+
+        @listenTo App.Vent, "remove", @leave
 
     addToCollection: (model) ->
         @collection.add model
@@ -29,4 +32,5 @@ class App.Views.Projects extends Backbone.View
 
     renderProject: (model) ->
         v = new App.Views.Project({model:model})
+        @childViews.push(v)
         @$('ul').append(v.render().el)
