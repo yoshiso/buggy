@@ -8,6 +8,7 @@ class App.Views.NewProject extends Backbone.View
     initialize: ->
         @listenTo @model, 'sync', @render
         @listenTo @model, 'invalid', @renderErrors
+        @listenTo @model, 'error', @parseErrorResponse
 
         @model.fetch() unless @model.isNew()
 
@@ -15,19 +16,12 @@ class App.Views.NewProject extends Backbone.View
         @$el.html(@template(@model.toJSON()))
         @
 
-    renderErrors: (model,errors) ->
-        $('.error').removeClass('error')
-        $('span.help-inline').remove()
-        _.each errors, @renderError, @
-
-    renderError:(errors,attribute) ->
-        err = errors.join ";"
-        @$('#'+attribute).closest('div.control-group').addClass('error')
-        @$('#'+attribute).closest('div.controls').append('<span class="help-inline">' + err + "<span>")
 
     saveProject: (e) ->
         e.preventDefault()
         @model.set name:@$('#name').val()
         @model.set description:@$('#description').val()
+        #server errror発生時にerrorイベントを発火する
         @model.save {},
             success:(model) -> App.Vent.trigger "project:create", model
+_.extend App.Views.NewProject.prototype, App.Mixins.Validatable
