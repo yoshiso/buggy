@@ -1,0 +1,21 @@
+<form id="new_issue" action="/issues" method="post" accept-charset="utf-8">
+    <fieldset>
+        <legend>New Issue</legend>
+
+        <div class="control-group">
+            <label for="name" class="control-label">Issue Name</label>
+            <div class="controls">
+                <input value="{{name}}"type="text" name="name" id="name" placeholder="Project Name">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="description">Description</label>
+            <div class="controls">
+                <textarea name="description" id="description" rows="5" cols="30">{{description}}</textarea>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn">Submit</button>
+    </fieldset>
+</form>
