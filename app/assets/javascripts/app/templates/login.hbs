@@ -1,0 +1,24 @@
+<form id="login" action="/sessions" method="post">
+    <fieldset>
+        <legend>Login</legend>
+
+        <div class="alert alert-error" style="display:none"></div>
+
+        <div class="control-group">
+            <label for="name" class="control-label">Username</label>
+            input
+            <div class="control">
+                <input type="text" name="username" id="Username" placeholder="Username">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="password" class="control-label">Password</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+    </fieldset>
+</form>
