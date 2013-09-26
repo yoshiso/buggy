@@ -16,10 +16,8 @@ class App.Views.ProjectDetails extends Backbone.View
 
 
     initialize: ->
-        if @model.get('user_id') is App.currentUser.id
-            @model.set owned: true
         @childViews = []
-        @listenTo @model, "change", @renderDetails
+        @listenTo @model, "sync", @renderDetails
         @listenTo @model, "error", @triggerAccessDenied
         @listenTo @model, "destroy", @triggerProjectDestroy
         @listenTo App.Vent, "issue:create", @renderNewIssue
@@ -33,6 +31,8 @@ class App.Views.ProjectDetails extends Backbone.View
         @
 
     renderDetails: ->
+        if @model.get('user_id') is App.currentUser.id
+            @model.set owned: true
         @$el.html(@template(@model.toJSON()))
         v = new App.Views.Issues({collection: @model.issues})
         @childViews.push(v)
