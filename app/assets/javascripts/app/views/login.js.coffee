@@ -7,6 +7,10 @@ class App.Views.Login extends Backbone.View
 
     initialize: ->
         @listenTo @model, "error", @renderError
+        @listenTo @model, "sync", @triggerLoggedIn
+
+    triggerLoggedIn: ->
+        App.Vent.trigger "user:logged_in",@model.get('id'),@model.get('username')
 
     renderError: ->
         @$('.alert').html('Credential are not valid').show()
