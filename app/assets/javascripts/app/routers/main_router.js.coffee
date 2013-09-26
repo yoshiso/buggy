@@ -7,10 +7,14 @@ class App.Routers.MainRouter extends Backbone.Router
         "projects/:id":"showProject"
         "projects/edit/:id":"editProject"
         "login":"login"
+        "logout":"logout"
 
     initialize: ->
         @headerView = new App.Views.Header()
         @contentView = new App.Views.Content()
+
+    logout: ->
+        App.Vent.trigger "user:logged_out"
 
     login: ->
         @layoutViews()
