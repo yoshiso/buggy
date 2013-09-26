@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem 'handlebars_assets'
 gem 'sorcery', git: "https://github.com/NoamB/sorcery"
 gem 'cancan'
+gem 'i18n-js'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
