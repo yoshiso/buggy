@@ -1,5 +1,6 @@
 json.id @project.id
 json.name @project.name
+json.user_id @project.user_id
 json.description @project.description
 
 json.issues @project.issues do |issue|

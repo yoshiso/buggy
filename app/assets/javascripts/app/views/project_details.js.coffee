@@ -16,6 +16,8 @@ class App.Views.ProjectDetails extends Backbone.View
 
 
     initialize: ->
+        if @model.get('user_id') is App.currentUser.id
+            @model.set owned: true
         @childViews = []
         @listenTo @model, "change", @renderDetails
         @listenTo @model, "error", @triggerAccessDenied

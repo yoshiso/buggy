@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    project = Project.new(project_params)
+    project = current_user.projects.new(project_params)
     project.save
     respond_with(project)
   end
