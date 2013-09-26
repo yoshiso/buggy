@@ -17,6 +17,7 @@ class App.Views.ProjectDetails extends Backbone.View
     initialize: ->
         @childViews = []
         @listenTo @model, "sync", @renderDetails
+        @listenTo App.Vent, "issue:create", @renderNewIssue
         @model.fetch()
 
     render: ->
@@ -29,6 +30,13 @@ class App.Views.ProjectDetails extends Backbone.View
         @childViews.push(v)
         @$('#issues').html(v.render().el)
 
-        v1 = new App.Views.NewIssue({model:new App.Models.Issue({project_id:@model.id})})
-        @childViews.push(v1)
-        @$('#new_issue').html(v1.render().el)
+        @new_issue_v = new App.Views.NewIssue({model:new App.Models.Issue({project_id:@model.id})})
+        @childViews.push(@new_issue_v)
+        @$('#new_issue').html(@new_issue_v.render().el)
+
+    renderNewIssue: ->
+        if @new_issue_v
+            @new_issue_v.remove()
+            @new_issue_v.off()
+        @new_issue_v = new App.Views.NewIssue({model:new App.Models.Issue({project_id:@model.id})})
+        @$('#new_issue').html(@new_issue_v.render().el)

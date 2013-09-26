@@ -3,7 +3,9 @@ class IssuesController < ApplicationController
 
   def create
     @issue = Issue.new(issue_params)
-    @issue.save
+    #errorの場合はerrorオブジェクトを返す
+    return respond_with(@issue) unless @issue.save
+
   end
 
   private

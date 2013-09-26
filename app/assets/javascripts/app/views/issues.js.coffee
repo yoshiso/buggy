@@ -12,7 +12,7 @@ class App.Views.Issues extends Backbone.View
         @$('span').text(@collection.length)
 
     addToCollection: (model) ->
-        @collection.add(model)
+        @collection.add model
         App.Vent.trigger "issues:change",model,@collection.length
 
     render: ->
