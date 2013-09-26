@@ -1,5 +1,4 @@
 <%= javascript_tag do %>
-$(function(){
     <% if current_user %>
         var current_user = {
             id: <%= current_user.id %>,
@@ -10,5 +9,4 @@ $(function(){
         var current_user = { loggedIn:false }
     <% end %>
     App.initialize({current_user:current_user});
-});
 <% end %>
